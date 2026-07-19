@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FooDiX | MuSCoW Board</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<!-- ===================================== -->
+<!-- Aurora Background -->
+<!-- ===================================== -->
+
+<div class="aurora">
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+</div>
+
+<!-- ===================================== -->
+<!-- Header -->
+<!-- ===================================== -->
+
+<header>
+
+    <div class="logo">
+
+        <i class="fa-solid fa-utensils"></i>
+
+        <div>
+
+            <h1 id="projectTitle">
+
+                FooDiX
+
+            </h1>
+
+            <p id="projectSubtitle">
+
+                سیستم هوشمند مدیریت تغذیه دانشجویان
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <button id="languageButton">
+
+        English
+
+    </button>
+
+</header>
+
+<!-- ===================================== -->
+<!-- Hero -->
+<!-- ===================================== -->
+
+<section class="hero">
+
+    <h2 id="heroTitle">
+
+        لیست اولویت‌بندی پروژه (MuSCoW)
+
+    </h2>
+
+    <p id="heroDescription">
+
+        تعیین قابلیت‌های ضروری و آینده پروژه
+
+    </p>
+
+</section>
+
+<!-- ===================================== -->
+<!-- Main Board -->
+<!-- ===================================== -->
+
+<section class="board">
+<!-- ============ MUST ============ -->
+
+    <div class="column must">
+
+        <div class="column-header">
+
+            <div class="icon">
+                <i class="fa-solid fa-fire"></i>
+            </div>
+
+            <div>
+
+                <h3 class="lang"
+                    data-fa="ضروری"
+                    data-en="Must Have">
+                    ضروری
+                </h3>
+
+                <span class="badge">10</span>
+
+            </div>
+
+        </div>
+
+        <ul>
+
+            <li class="lang"
+                data-fa="ورود و احراز هویت مدیر"
+                data-en="Admin Authentication">
+                ورود و احراز هویت مدیر
+            </li>
+
+            <li class="lang"
+                data-fa="مدیریت غذاها"
+                data-en="Food Management">
+                مدیریت غذاها
+            </li>
+
+            <li class="lang"
+                data-fa="پیشنهاد هوشمند غذا"
+                data-en="Smart Recommendation">
+                پیشنهاد هوشمند غذا
+            </li>
+
+            <li class="lang"
+                data-fa="پایگاه داده SQLite"
+                data-en="SQLite Database">
+                پایگاه داده SQLite
+            </li>
+
+            <li class="lang"
+                data-fa="مدیریت بودجه روزانه"
+                data-en="Daily Budget">
+                مدیریت بودجه روزانه
+            </li>
+
+            <li class="lang"
+                data-fa="مدیریت بودجه هفتگی"
+                data-en="Weekly Budget">
+                مدیریت بودجه هفتگی
+            </li>
+
+            <li class="lang"
+                data-fa="ثبت امتیاز غذا"
+                data-en="Food Rating">
+                ثبت امتیاز غذا
+            </li>
+
+            <li class="lang"
+                data-fa="تاریخچه مصرف غذا"
+                data-en="Food History">
+                تاریخچه مصرف غذا
+            </li>
+
+            <li class="lang"
+                data-fa="جستجوی غذا"
+                data-en="Food Search">
+                جستجوی غذا
+            </li>
+
+            <li class="lang"
+                data-fa="تأیید پیشنهاد کاربران"
+                data-en="Admin Approval">
+                تأیید پیشنهاد کاربران
+            </li>
+
+        </ul>
+
+        <div class="progress">
+
+            <div class="fill must-fill"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ============ SHOULD ============ -->
+
+    <div class="column should">
+
+        <div class="column-header">
+
+            <div class="icon">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div>
+
+                <h3 class="lang"
+                    data-fa="بهتر است باشد"
+                    data-en="Should Have">
+                    بهتر است باشد
+                </h3>
+
+                <span class="badge">8</span>
+
+            </div>
+
+        </div>
+
+        <ul>
+
+            <li class="lang"
+                data-fa="داشبورد آماری"
+                data-en="Statistics Dashboard">
+                داشبورد آماری
+            </li>
+
+            <li class="lang"
+                data-fa="تحلیل بودجه"
+                data-en="Budget Analytics">
+                تحلیل بودجه
+            </li>
+
+            <li class="lang"
+                data-fa="دسته‌بندی غذاها"
+                data-en="Food Categories">
+                دسته‌بندی غذاها
+            </li>
+
+            <li class="lang"
+                data-fa="تحلیل کالری"
+                data-en="Calories Analysis">
+                تحلیل کالری
+            </li>
+
+            <li class="lang"
+                data-fa="پیشنهاد شخصی‌سازی شده"
+                data-en="Personalized Recommendation">
+                پیشنهاد شخصی‌سازی شده
+            </li>
+
+            <li class="lang"
+                data-fa="فیلتر پیشرفته"
+                data-en="Advanced Filtering">
+                فیلتر پیشرفته
+            </li>
+
+            <li class="lang"
+                data-fa="بهینه‌سازی عملکرد"
+                data-en="Performance Optimization">
+                بهینه‌سازی عملکرد
+            </li>
+<li class="lang"
+                data-fa="خوشه‌بندی K-Means"
+                data-en="K-Means Clustering">
+                خوشه‌بندی K-Means
+            </li>
+
+        </ul>
+
+        <div class="progress">
+
+            <div class="fill should-fill"></div>
+
+        </div>
+
+    </div>
+<!-- ============ COULD ============ -->
+
+    <div class="column could">
+
+        <div class="column-header">
+
+            <div class="icon">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+
+            <div>
+
+                <h3 class="lang"
+                    data-fa="در صورت داشتن زمان"
+                    data-en="Could Have">
+
+                    در صورت داشتن زمان
+
+                </h3>
+
+                <span class="badge">9</span>
+
+            </div>
+
+        </div>
+
+        <ul>
+
+            <li class="lang"
+                data-fa="حالت تیره و روشن"
+                data-en="Dark / Light Theme">
+                حالت تیره و روشن
+            </li>
+
+            <li class="lang"
+                data-fa="همگام سازی ابری"
+                data-en="Cloud Sync">
+                همگام سازی ابری
+            </li>
+
+            <li class="lang"
+                data-fa="گزارش اکسل"
+                data-en="Excel Report">
+                گزارش اکسل
+            </li>
+
+            <li class="lang"
+                data-fa="گزارش PDF"
+                data-en="PDF Report">
+                گزارش PDF
+            </li>
+
+            <li class="lang"
+                data-fa="اعلان ایمیلی"
+                data-en="Email Notification">
+                اعلان ایمیلی
+            </li>
+
+            <li class="lang"
+                data-fa="اعلان پیامکی"
+                data-en="SMS Notification">
+                اعلان پیامکی
+            </li>
+
+            <li class="lang"
+                data-fa="اتصال به API تغذیه"
+                data-en="Nutrition API">
+                اتصال به API تغذیه
+            </li>
+
+            <li class="lang"
+                data-fa="اسکن بارکد"
+                data-en="Barcode Scanner">
+                اسکن بارکد
+            </li>
+
+            <li class="lang"
+                data-fa="نسخه موبایل"
+                data-en="Mobile Version">
+                نسخه موبایل
+            </li>
+
+        </ul>
+
+        <div class="progress">
+
+            <div class="fill could-fill"></div>
+
+        </div>
+
+    </div>
+
+    <!-- ============ WON'T ============ -->
+
+    <div class="column wont">
+
+        <div class="column-header">
+
+            <div class="icon">
+                <i class="fa-solid fa-ban"></i>
+            </div>
+
+            <div>
+
+                <h3 class="lang"
+                    data-fa="در این نسخه انجام نمی‌شود"
+                    data-en="Won't Have">
+
+                    در این نسخه انجام نمی‌شود
+
+                </h3>
+
+                <span class="badge">7</span>
+
+            </div>
+
+        </div>
+
+        <ul>
+
+            <li class="lang"
+                data-fa="سفارش آنلاین غذا"
+                data-en="Online Ordering">
+                سفارش آنلاین غذا
+            </li>
+
+            <li class="lang"
+                data-fa="سیستم تحویل غذا"
+                data-en="Delivery System">
+                سیستم تحویل غذا
+            </li>
+
+            <li class="lang"
+                data-fa="درگاه پرداخت"
+                data-en="Payment Gateway">
+                درگاه پرداخت
+            </li>
+
+            <li class="lang"
+                data-fa="مدیریت رستوران"
+                data-en="Restaurant Management">
+                مدیریت رستوران
+            </li>
+
+            <li class="lang"
+                data-fa="دستیار صوتی"
+                data-en="Voice Assistant">
+                دستیار صوتی
+            </li>
+
+            <li class="lang"
+                data-fa="امکانات شبکه اجتماعی"
+                data-en="Social Platform">
+                امکانات شبکه اجتماعی
+            </li>
+
+            <li class="lang"
+                data-fa="پشتیبانی از دستگاه‌های پوشیدنی"
+                data-en="Wearable Devices">
+                پشتیبانی از دستگاه‌های پوشیدنی
+            </li>
+
+        </ul>
+
+        <div class="progress">
+
+            <div class="fill wont-fill"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+<p class="lang"
+       data-fa="طراحی و توسعه توسط مرتضی مطهر | FooDiX 2026"
+       data-en="Designed & Developed by Morteza Motahar | FooDiX 2026">
+
+       طراحی و توسعه توسط مرتضی مطهر | FooDiX 2026
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

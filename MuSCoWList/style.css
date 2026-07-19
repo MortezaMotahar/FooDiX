@@ -1,0 +1,1017 @@
+/* ===========================================
+                FooDiX - MoSCoW Board
+                Design by Morteza Motahar
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Vazirmatn',sans-serif;
+
+    background:#050816;
+
+    color:#fff;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+}
+
+/* ===============================
+        Aurora Background
+================================ */
+
+.aurora{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-2;
+
+}
+
+.aurora span{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    animation:float 18s infinite ease-in-out;
+
+    opacity:.55;
+
+}
+
+.aurora span:nth-child(1){
+
+    width:450px;
+
+    height:450px;
+
+    background:#3b82f6;
+
+    top:-120px;
+
+    left:-120px;
+
+}
+
+.aurora span:nth-child(2){
+
+    width:520px;
+
+    height:520px;
+
+    background:#9333ea;
+
+    right:-120px;
+
+    top:15%;
+
+}
+
+.aurora span:nth-child(3){
+
+    width:400px;
+
+    height:400px;
+
+    background:#22c55e;
+
+    bottom:-120px;
+
+    left:20%;
+
+}
+
+.aurora span:nth-child(4){
+
+    width:350px;
+
+    height:350px;
+
+    background:#06b6d4;
+
+    right:15%;
+
+    bottom:-80px;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-70px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===============================
+            Header
+================================ */
+
+header{
+
+    width:92%;
+
+    margin:auto;
+
+    padding:35px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo i{
+
+    font-size:45px;
+
+    color:#22c55e;
+
+    text-shadow:0 0 25px #22c55e;
+
+}
+
+.logo h1{
+
+    font-size:38px;
+
+    font-weight:800;
+
+}
+
+.logo p{
+
+    color:#94a3b8;
+
+    margin-top:4px;
+
+}
+
+/* ===============================
+        Language Button
+================================ */
+
+#languageButton{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    padding:12px 28px;
+
+    border-radius:40px;
+
+    font-size:15px;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.35s;
+
+}
+
+#languageButton:hover{
+
+    background:#2563eb;
+
+    transform:translateY(-3px);
+
+}
+
+/* ===============================
+            Hero
+================================ */
+
+.hero{
+
+    width:92%;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:35px 0 70px;
+
+}
+
+.hero h2{
+
+    font-size:60px;
+
+    font-weight:800;
+
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #22c55e,
+        #a855f7,
+        #f59e0b
+    );
+
+    background-clip:text;
+    -webkit-background-clip:text;
+
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+
+}
+
+.hero p{
+
+    margin-top:18px;
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+}
+/* ===========================================
+                Main Board
+=========================================== */
+
+.board{
+
+    width:92%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    padding-bottom:80px;
+
+}
+
+/* ===========================================
+                Glass Card
+=========================================== */
+
+.column{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    transition:.4s;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.45);
+
+}
+
+.column:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.55);
+
+}
+
+/* Glow Border */
+
+.column::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:28px;
+
+    padding:1px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.35),
+        transparent,
+        rgba(255,255,255,.15)
+    );
+
+    mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    mask-composite:exclude;
+
+    -webkit-mask-composite:xor;
+
+}
+
+/* ===========================================
+            Header Of Card
+=========================================== */
+
+.column-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+
+}
+
+.icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.column-header h3{
+
+    margin-top:10px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.badge{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:10px;
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    font-size:14px;
+
+}
+
+/* ===========================================
+                List
+=========================================== */
+
+.column ul{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.column li{
+
+    padding:15px 18px;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+    position:relative;
+
+}
+
+.column li::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    right:18px;
+
+}
+
+html[dir="ltr"] .column li::before{
+
+    right:auto;
+
+    left:18px;
+
+}
+
+.column li{
+
+    padding-right:40px;
+
+}
+
+html[dir="ltr"] .column li{
+
+    padding-right:18px;
+
+    padding-left:40px;
+
+}
+
+.column li:hover{
+
+    transform:translateX(-6px);
+
+    background:rgba(255,255,255,.10);
+
+}
+/* ===========================================
+            MUST HAVE
+=========================================== */
+
+.must{
+
+    border-top:4px solid #22c55e;
+
+}
+
+.must .icon{
+
+    color:#22c55e;
+
+    box-shadow:0 0 25px rgba(34,197,94,.35);
+
+}
+
+.must li::before{
+
+    background:#22c55e;
+
+    box-shadow:0 0 10px #22c55e;
+
+}
+
+/* ===========================================
+            SHOULD HAVE
+=========================================== */
+
+.should{
+
+    border-top:4px solid #3b82f6;
+
+}
+
+.should .icon{
+
+    color:#3b82f6;
+
+    box-shadow:0 0 25px rgba(59,130,246,.35);
+
+}
+
+.should li::before{
+
+    background:#3b82f6;
+
+    box-shadow:0 0 10px #3b82f6;
+
+}
+
+/* ===========================================
+            COULD HAVE
+=========================================== */
+
+.could{
+
+    border-top:4px solid #a855f7;
+
+}
+
+.could .icon{
+
+    color:#a855f7;
+
+    box-shadow:0 0 25px rgba(168,85,247,.35);
+
+}
+
+.could li::before{
+
+    background:#a855f7;
+
+    box-shadow:0 0 10px #a855f7;
+
+}
+
+/* ===========================================
+            WON'T HAVE
+=========================================== */
+
+.wont{
+
+    border-top:4px solid #ef4444;
+
+}
+
+.wont .icon{
+
+    color:#ef4444;
+
+    box-shadow:0 0 25px rgba(239,68,68,.35);
+
+}
+
+.wont li::before{
+
+    background:#ef4444;
+
+    box-shadow:0 0 10px #ef4444;
+
+}
+
+/* ===========================================
+            Progress Bar
+=========================================== */
+
+.progress{
+
+    margin-top:28px;
+
+    width:100%;
+
+    height:9px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.fill{
+
+    height:100%;
+
+    border-radius:30px;
+
+}
+
+.must-fill{
+
+    width:100%;
+
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+
+}
+
+.should-fill{
+
+    width:80%;
+
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+
+}
+
+.could-fill{
+
+    width:60%;
+
+    background:linear-gradient(90deg,#9333ea,#d8b4fe);
+
+}
+
+.wont-fill{
+
+    width:25%;
+
+    background:linear-gradient(90deg,#ef4444,#fb7185);
+
+}
+
+/* ===========================================
+            Entrance Animation
+=========================================== */
+
+.column{
+
+    opacity:0;
+
+    animation:fadeUp .8s forwards;
+
+}
+
+.column:nth-child(1){
+
+    animation-delay:.15s;
+
+}
+
+.column:nth-child(2){
+
+    animation-delay:.35s;
+
+}
+
+.column:nth-child(3){
+
+    animation-delay:.55s;
+
+}
+
+.column:nth-child(4){
+
+    animation-delay:.75s;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================================
+            Hover Glow
+=========================================== */
+
+.column:hover{
+
+    box-shadow:
+
+    0 0 35px rgba(255,255,255,.08),
+
+    0 25px 60px rgba(0,0,0,.55);
+
+}
+
+.must:hover{
+
+    box-shadow:
+
+    0 0 30px rgba(34,197,94,.35),
+
+    0 25px 60px rgba(0,0,0,.55);
+
+}
+
+.should:hover{
+
+    box-shadow:
+
+    0 0 30px rgba(59,130,246,.35),
+
+    0 25px 60px rgba(0,0,0,.55);
+
+}
+
+.could:hover{
+
+    box-shadow:
+
+    0 0 30px rgba(168,85,247,.35),
+
+    0 25px 60px rgba(0,0,0,.55);
+
+}
+
+.wont:hover{
+
+    box-shadow:
+
+    0 0 30px rgba(239,68,68,.35),
+
+    0 25px 60px rgba(0,0,0,.55);
+
+}
+/* ===========================================
+                Footer
+=========================================== */
+
+footer{
+
+    width:92%;
+
+    margin:70px auto 30px;
+
+    text-align:center;
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+    letter-spacing:.5px;
+
+}
+
+/* ===========================================
+            Scrollbar
+=========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0b1120;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    border-radius:30px;
+
+    background:linear-gradient(
+        180deg,
+        #2563eb,
+        #9333ea
+    );
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:linear-gradient(
+        180deg,
+        #22c55e,
+        #60a5fa
+    );
+
+}
+
+/* ===========================================
+            Text Selection
+=========================================== */
+
+::selection{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+/* ===========================================
+            Smooth Transition
+=========================================== */
+
+button,
+.column,
+li,
+.badge{
+
+    transition:.35s ease;
+
+}
+
+/* ===========================================
+            Responsive
+=========================================== */
+
+@media(max-width:1300px){
+
+    .board{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:850px){
+
+    header{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+    .logo{
+
+        flex-direction:column;
+
+    }
+
+    .hero h2{
+
+        font-size:42px;
+
+    }
+
+    .board{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h2{
+
+        font-size:32px;
+
+    }
+
+    .hero p{
+
+        font-size:16px;
+
+    }
+
+    .column{
+
+        padding:22px;
+
+    }
+
+    .column-header h3{
+
+        font-size:21px;
+
+    }
+
+    .logo h1{
+
+        font-size:30px;
+
+    }
+
+}
+/* Persian */
+
+html[dir="rtl"] .column{
+
+    text-align:right;
+
+}
+
+html[dir="rtl"] .column ul{
+
+    direction:rtl;
+
+}
+
+html[dir="rtl"] .column li{
+
+    text-align:right;
+
+}
+html[dir="rtl"] .column-header{
+
+    text-align: right;
+}
+html[dir="rtl"] header{
+
+    direction: rtl;
+}
+
+/* English */
+
+html[dir="ltr"] .column{
+
+    text-align:left;
+
+}
+
+html[dir="ltr"] .column ul{
+
+    direction:ltr;
+
+}
+
+html[dir="ltr"] .column li{
+
+    text-align:left;
+
+}
+html[dir="ltr"] .column-header{
+
+    text-align:left;
+
+}
+html[dir="ltr"] header{
+
+    direction: ltr;
+
+}
