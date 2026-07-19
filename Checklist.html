@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 FooDiX </title>
+    <!-- Font Awesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0e1a 0%, #1a1e2f 40%, #2a1f3d 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(52, 152, 219, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(155, 89, 182, 0.08) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes bgFloat {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(2%, 1%) rotate(3deg); }
+        }
+
+        /* ===== FLOATING PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; width: 6px; height: 6px; }
+        .particle:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; width: 3px; height: 3px; }
+        .particle:nth-child(3) { left: 35%; animation-duration: 10s; animation-delay: 4s; width: 5px; height: 5px; }
+        .particle:nth-child(4) { left: 50%; animation-duration: 14s; animation-delay: 1s; width: 4px; height: 4px; }
+        .particle:nth-child(5) { left: 65%; animation-duration: 11s; animation-delay: 3s; width: 7px; height: 7px; }
+        .particle:nth-child(6) { left: 78%; animation-duration: 16s; animation-delay: 5s; width: 3px; height: 3px; }
+        .particle:nth-child(7) { left: 88%; animation-duration: 13s; animation-delay: 2s; width: 5px; height: 5px; }
+        .particle:nth-child(8) { left: 45%; animation-duration: 18s; animation-delay: 6s; width: 4px; height: 4px; }
+        .particle:nth-child(9) { left: 55%; animation-duration: 9s; animation-delay: 0.5s; width: 6px; height: 6px; }
+        .particle:nth-child(10) { left: 72%; animation-duration: 17s; animation-delay: 3.5s; width: 3px; height: 3px; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px 45px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #3498db);
+            border-radius: 3px;
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .header .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .header .logo i {
+            font-size: 42px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(52, 152, 219, 0.3));
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #a8c8e8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .header h1 span {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        /* ===== PROGRESS SUMMARY ===== */
+        .summary {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 18px 25px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .summary:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(52, 152, 219, 0.15);
+        }
+
+        .summary .info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .summary .info .number {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .summary .info .total {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 16px;
+        }
+
+        .summary .progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .summary .progress-bar {
+            width: 180px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .summary .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3498db, #9b59b6, #3498db);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            animation: progressShimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes progressShimmer {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .summary .badge {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #a8c8e8;
+            min-width: 55px;
+            text-align: center;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            margin-bottom: 22px;
+            animation: fadeUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section:nth-child(1) { animation-delay: 0.05s; }
+        .section:nth-child(2) { animation-delay: 0.10s; }
+        .section:nth-child(3) { animation-delay: 0.15s; }
+        .section:nth-child(4) { animation-delay: 0.20s; }
+        .section:nth-child(5) { animation-delay: 0.25s; }
+        .section:nth-child(6) { animation-delay: 0.30s; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 18px;
+            margin-bottom: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border-right: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .section-title:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-right-color: #3498db;
+        }
+
+        .section-title .icon {
+            font-size: 22px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(52, 152, 219, 0.12);
+            border-radius: 10px;
+            color: #5dade2;
+        }
+
+        .section-title .label {
+            font-size: 17px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: 0.3px;
+        }
+
+        .section-title .count {
+            margin-right: auto;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title .count .num {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== CHECKLIST GRID ===== */
+        .checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+            padding-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .checklist {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 25px 20px;
+            }
+            .summary {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+                text-align: center;
+            }
+            .summary .progress-wrapper {
+                justify-content: center;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* ===== CHECK ITEM ===== */
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .check-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.03), rgba(155, 89, 182, 0.03));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .check-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(-4px);
+        }
+
+        .check-item:hover::before {
+            opacity: 1;
+        }
+
+        .check-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .check-item .custom-check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            margin-top: 1px;
+            position: relative;
+        }
+
+        .check-item .custom-check i {
+            font-size: 13px;
+            color: #fff;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .check-item input[type="checkbox"]:checked + .custom-check {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-color: #3498db;
+            box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
+            animation: pop 0.3s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .check-item input[type="checkbox"]:checked + .custom-check i {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .check-item .content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .check-item .content .title {
+            font-size: 14.5px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .check-item .content .title .tag {
+            font-size: 10px;
+            background: rgba(52, 152, 219, 0.15);
+            color: #5dade2;
+            padding: 1px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .check-item .content .desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 3px;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+        }
+
+        .check-item input[type="checkbox"]:checked ~ .content .title {
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: line-through;
+        }
+
+        .check-item input[type="checkbox"]:checked ~ .content .desc {
+            color: rgba(255, 255, 255, 0.12);
+            text-decoration: line-through;
+        }
+
+        /* ===== SUB-GROUP (nested) ===== */
+        .sub-group {
+            padding-right: 30px;
+            border-right: 1px dashed rgba(255, 255, 255, 0.06);
+            margin: 4px 0 4px 0;
+        }
+
+        .sub-group .check-item {
+            padding: 6px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .sub-group .check-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: none;
+        }
+
+        .sub-group .check-item .content .title {
+            font-size: 13.5px;
+            font-weight: 400;
+        }
+
+        .sub-group .check-item .custom-check {
+            width: 20px;
+            height: 20px;
+            border-width: 1.5px;
+        }
+
+        .sub-group .check-item .custom-check i {
+            font-size: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 35px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer .meta {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer .meta strong {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+        }
+
+        .footer .meta i {
+            color: #3498db;
+            margin: 0 4px;
+        }
+
+        .footer .actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer .btn {
+            padding: 8px 22px;
+            border: none;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .footer .btn-reset {
+            background: rgba(231, 76, 60, 0.15);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.15);
+        }
+
+        .footer .btn-reset:hover {
+            background: rgba(231, 76, 60, 0.25);
+            border-color: rgba(231, 76, 60, 0.3);
+            transform: scale(1.03);
+            box-shadow: 0 4px 25px rgba(231, 76, 60, 0.15);
+        }
+
+        .footer .btn-save {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
+            color: #a8c8e8;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer .btn-save:hover {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(155, 89, 182, 0.3));
+            transform: scale(1.03);
+            box-shadow: 0 4px 25px rgba(52, 152, 219, 0.1);
+        }
+
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 28px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 999;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            font-size: 20px;
+        }
+
+        .toast.success i { color: #2ecc71; }
+        .toast.warning i { color: #f39c12; }
+        .toast.info i { color: #3498db; }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3498db, #9b59b6);
+            border-radius: 10px;
+        }
+
+        /* ===== SELECTION ===== */
+        ::selection {
+            background: rgba(52, 152, 219, 0.3);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== PARTICLES ===== -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تغییرات ذخیره شد</span>
+    </div>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <h1>Foo<span>DiX</span></h1>
+            </div>
+            <p class="subtitle">✦ چک‌لیست جامع پروژه · سیستم هوشمند تغذیه دانشجویی ✦</p>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="summary">
+            <div class="info">
+                <i class="fas fa-rocket" style="color:#3498db; opacity:0.5;"></i>
+                <span>پیشرفت:</span>
+                <span class="number" id="progressText">0</span>
+                <span class="total">از <span id="totalItems">0</span></span>
+            </div>
+            <div class="progress-wrapper">
+                <div class="progress-bar">
+                    <div class="fill" id="progressFill"></div>
+                </div>
+                <span class="badge" id="progressPercent">۰%</span>
+            </div>
+        </div>
+
+        <!-- ===== SECTIONS ===== -->
+
+        <!-- 1. مدیریت غذاها -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon"><i class="fas fa-utensils"></i></span>
+                <span class="label">مدیریت غذاها</span>
+                <span class="count"><span class="num">۸</span> مورد</span>
+            </div>
+            <div class="checklist">
+                <div class="check-item" data-id="food_add">
+                    <input type="checkbox" id="food_add">
+                    <label class="custom-check" for="food_add"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">افزودن غذای جدید <span class="tag">CRUD</span></div>
+                        <div class="desc">فرم شامل نام، مواد اولیه، هزینه، کالری، دسته و نوع غذا</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_edit">
+                    <input type="checkbox" id="food_edit">
+                    <label class="custom-check" for="food_edit"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">ویرایش غذا <span class="tag">CRUD</span></div>
+                        <div class="desc">تغییر تمام فیلدها با اعتبارسنجی کامل</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_delete">
+                    <input type="checkbox" id="food_delete">
+                    <label class="custom-check" for="food_delete"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">حذف غذا <span class="tag">CRUD</span></div>
+                        <div class="desc">حذف به‌همراه تاریخچه و امتیازات مرتبط (Cascade)</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_search">
+                    <input type="checkbox" id="food_search">
+                    <label class="custom-check" for="food_search"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">جستجو در غذاها <span class="tag">UI</span></div>
+                        <div class="desc">بر اساس نام و مواد اولیه با جستجوی زنده</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_filter">
+                    <input type="checkbox" id="food_filter">
+                    <label class="custom-check" for="food_filter"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">فیلتر بر اساس دسته‌بندی <span class="tag">UI</span></div>
+                        <div class="desc">صبحانه، ناهار، شام، میان‌وعده</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_rate">
+                    <input type="checkbox" id="food_rate">
+                    <label class="custom-check" for="food_rate"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">امتیازدهی به غذا <span class="tag">تعامل</span></div>
+                        <div class="desc">از ۱ تا ۵ ستاره – میانگین به‌روز می‌شود</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_suggest">
+                    <input type="checkbox" id="food_suggest">
+                    <label class="custom-check" for="food_suggest"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">پیشنهاد غذای جدید توسط کاربر <span class="tag">کاربر</span></div>
+                        <div class="desc">ثبت در جدول پیشنهادات با وضعیت pending</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="food_approve">
+                    <input type="checkbox" id="food_approve">
+                    <label class="custom-check" for="food_approve"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">تأیید / رد پیشنهادات <span class="tag">ادمین</span></div>
+                        <div class="desc">افزودن خودکار به لیست غذاها پس از تأیید</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. پیشنهاد هوشمند -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon"><i class="fas fa-brain"></i></span>
+                <span class="label">پیشنهاد هوشمند</span>
+                <span class="count"><span class="num">۶</span> مورد</span>
+            </div>
+            <div class="checklist">
+                <div class="check-item" data-id="rec_balanced">
+                    <input type="checkbox" id="rec_balanced">
+                    <label class="custom-check" for="rec_balanced"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">پیشنهاد متعادل <span class="tag">ML</span></div>
+                        <div class="desc">بر اساس خوشه‌بندی K-Means و میانگین‌ها</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="rec_cheap">
+                    <input type="checkbox" id="rec_cheap">
+                    <label class="custom-check" for="rec_cheap"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">پیشنهاد ارزان‌ترین <span class="tag">هوشمند</span></div>
+                        <div class="desc">با توجه به بودجه باقی‌مانده روزانه</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="rec_highcal">
+                    <input type="checkbox" id="rec_highcal">
+                    <label class="custom-check" for="rec_highcal"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">پیشنهاد پرکالری <span class="tag">هوشمند</span></div>
+                        <div class="desc">بیشترین کالری در محدوده بودجه</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="rec_toprate">
+                    <input type="checkbox" id="rec_toprate">
+                    <label class="custom-check" for="rec_toprate"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">پیشنهاد بهترین امتیاز <span class="tag">هوشمند</span></div>
+                        <div class="desc">میانگین امتیاز بالا از دید کاربران</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="rec_diversity">
+                    <input type="checkbox" id="rec_diversity">
+                    <label class="custom-check" for="rec_diversity"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">پیشنهاد تنوع غذایی <span class="tag">ویژه</span></div>
+                        <div class="desc">نمایش غذاهای بدون امتیاز به‌صورت تصادفی</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="rec_consume">
+                    <input type="checkbox" id="rec_consume">
+                    <label class="custom-check" for="rec_consume"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">ثبت مصرف از لیست پیشنهادات <span class="tag">تعامل</span></div>
+                        <div class="desc">اعتبارسنجی بودجه و کاهش خودکار اعتبار</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. بودجه -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon"><i class="fas fa-coins"></i></span>
+                <span class="label">مدیریت بودجه</span>
+                <span class="count"><span class="num">۳</span> مورد</span>
+            </div>
+            <div class="checklist">
+                <div class="check-item" data-id="budget_view">
+                    <input type="checkbox" id="budget_view">
+                    <label class="custom-check" for="budget_view"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">نمایش بودجه روزانه و هفتگی <span class="tag">UI</span></div>
+                        <div class="desc">در نوار وضعیت و تب بودجه به‌صورت لحظه‌ای</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="budget_edit">
+                    <input type="checkbox" id="budget_edit">
+                    <label class="custom-check" for="budget_edit"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">ویرایش بودجه <span class="tag">CRUD</span></div>
+                        <div class="desc">ذخیره در دیتابیس و به‌روزرسانی لحظه‌ای</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="budget_validation">
+                    <input type="checkbox" id="budget_validation">
+                    <label class="custom-check" for="budget_validation"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">اعتبارسنجی هزینه هنگام ثبت مصرف <span class="tag">امنیت</span></div>
+                        <div class="desc">هشدار در صورت تجاوز از بودجه باقی‌مانده</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. تاریخچه مصرف -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon"><i class="fas fa-history"></i></span>
+                <span class="label">تاریخچه مصرف</span>
+                <span class="count"><span class="num">۳</span> مورد</span>
+            </div>
+            <div class="checklist">
+                <div class="check-item" data-id="hist_view">
+                    <input type="checkbox" id="hist_view">
+                    <label class="custom-check" for="hist_view"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">مشاهده تاریخچه مصرف امروز <span class="tag">UI</span></div>
+                        <div class="desc">لیست وعده‌ها با هزینه، کالری و زمان ثبت</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="hist_delete">
+                    <input type="checkbox" id="hist_delete">
+                    <label class="custom-check" for="hist_delete"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">حذف رکورد از تاریخچه <span class="tag">CRUD</span></div>
+                        <div class="desc">با تأیید کاربر و به‌روزرسانی بودجه</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="hist_summary">
+                    <input type="checkbox" id="hist_summary">
+                    <label class="custom-check" for="hist_summary"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">خلاصه روزانه <span class="tag">گزارش</span></div>
+                        <div class="desc">تعداد وعده، هزینه کل، کالری، باقی‌مانده بودجه</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. ادمین -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon"><i class="fas fa-user-shield"></i></span>
+                <span class="label">قابلیت‌های ادمین</span>
+                <span class="count"><span class="num">۶</span> مورد</span>
+            </div>
+            <div class="checklist">
+                <div class="check-item" data-id="admin_login">
+                    <input type="checkbox" id="admin_login">
+                    <label class="custom-check" for="admin_login"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">ورود ادمین <span class="tag">امنیت</span></div>
+                        <div class="desc">با نام کاربری و رمز عبور (۲ ادمین پیش‌فرض)</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="admin_cluster">
+                    <input type="checkbox" id="admin_cluster">
+                    <label class="custom-check" for="admin_cluster"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">تحلیل خوشه‌بندی ۳ بعدی <span class="tag">ML</span></div>
+                        <div class="desc">نمودار تعاملی با matplotlib و mpl_toolkits</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="admin_stats">
+                    <input type="checkbox" id="admin_stats">
+                    <label class="custom-check" for="admin_stats"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">آمار کلی سیستم <span class="tag">گزارش</span></div>
+                        <div class="desc">تعداد غذاها، وعده‌ها، میانگین هزینه، پرمصرف‌ترین‌ها</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="admin_suggest">
+                    <input type="checkbox" id="admin_suggest">
+                    <label class="custom-check" for="admin_suggest"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">مدیریت پیشنهادات کاربران <span class="tag">ادمین</span></div>
+                        <div class="desc">مشاهده، تأیید و رد در تب جداگانه</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="admin_role">
+                    <input type="checkbox" id="admin_role">
+                    <label class="custom-check" for="admin_role"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">تغییر نقش user / admin <span class="tag">امنیت</span></div>
+                        <div class="desc">دسترسی به تب‌های اضافی پس از ورود</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="admin_help">
+                    <input type="checkbox" id="admin_help">
+                    <label class="custom-check" for="admin_help"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">راهنمای جامع و اطلاعات تماس <span class="tag">UX</span></div>
+                        <div class="desc">تب راهنما با جزئیات کامل و ارتباط با تیم</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. زیرساخت فنی -->
+        <div class="section">
+            <div class="section-title">
+                <span class="icon"><i class="fas fa-server"></i></span>
+                <span class="label">زیرساخت و فنی</span>
+                <span class="count"><span class="num">۵</span> مورد</span>
+            </div>
+            <div class="checklist">
+                <div class="check-item" data-id="tech_db">
+                    <input type="checkbox" id="tech_db">
+                    <label class="custom-check" for="tech_db"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">مدیریت دیتابیس SQLite <span class="tag">پایگاه</span></div>
+                        <div class="desc">ایجاد جداول، روابط، ایندکس‌ها و مهاجرت داده</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="tech_sample">
+                    <input type="checkbox" id="tech_sample">
+                    <label class="custom-check" for="tech_sample"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">داده‌های نمونه اولیه <span class="tag">پایگاه</span></div>
+                        <div class="desc">۱۰ غذای پیش‌فرض با امتیاز تصادفی برای شروع کار</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="tech_ml">
+                    <input type="checkbox" id="tech_ml">
+                    <label class="custom-check" for="tech_ml"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">خوشه‌بندی با K-Means <span class="tag">ML</span></div>
+                        <div class="desc">استفاده از StandardScaler و scikit-learn</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="tech_ui">
+                    <input type="checkbox" id="tech_ui">
+                    <label class="custom-check" for="tech_ui"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">رابط کاربری PyQt6 <span class="tag">UI</span></div>
+                        <div class="desc">تب‌ها، جداول، دکمه‌ها، دیالوگ‌ها و استایل‌دهی پیشرفته</div>
+                    </div>
+                </div>
+                <div class="check-item" data-id="tech_error">
+                    <input type="checkbox" id="tech_error">
+                    <label class="custom-check" for="tech_error"><i class="fas fa-check"></i></label>
+                    <div class="content">
+                        <div class="title">مدیریت خطا و اعتبارسنجی <span class="tag">امنیت</span></div>
+                        <div class="desc">پیام‌های هشدار و جلوگیری از کرش برنامه</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="meta">
+                <i class="fas fa-code"></i>
+                <strong>FooDiX</strong> · v2.0 · <span id="dateNow"></span>
+                <span style="margin:0 8px;color:rgba(255,255,255,0.1);">|</span>
+                <i class="fas fa-check-circle" style="color:#2ecc71;"></i> <span id="completedCount">۰</span> تکمیل شده
+            </div>
+            <div class="actions">
+                <button class="btn btn-save" id="saveBtn"><i class="fas fa-save"></i> ذخیره</button>
+                <button class="btn btn-reset" id="resetBtn"><i class="fas fa-undo-alt"></i> ریست</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== ELEMENTS =====
+            const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+            const totalSpan = document.getElementById('totalItems');
+            const progressText = document.getElementById('progressText');
+            const progressPercent = document.getElementById('progressPercent');
+            const progressFill = document.getElementById('progressFill');
+            const completedCount = document.getElementById('completedCount');
+            const dateNow = document.getElementById('dateNow');
+            const resetBtn = document.getElementById('resetBtn');
+            const saveBtn = document.getElementById('saveBtn');
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+
+            // ===== DATE =====
+            const now = new Date();
+            dateNow.textContent = now.toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // ===== TOAST =====
+            let toastTimer = null;
+
+            function showToast(message, type = 'success') {
+                toast.className = 'toast ' + type;
+                toastMessage.textContent = message;
+                toast.querySelector('i').className = type === 'success' ? 'fas fa-check-circle' :
+                                                    type === 'warning' ? 'fas fa-exclamation-triangle' :
+                                                    'fas fa-info-circle';
+                toast.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            }
+
+            // ===== UPDATE PROGRESS =====
+            function updateProgress() {
+                const total = checkboxes.length;
+                const checked = document.querySelectorAll('.check-item input[type="checkbox"]:checked').length;
+                const percent = total ? Math.round((checked / total) * 100) : 0;
+
+                progressText.textContent = checked;
+                totalSpan.textContent = total;
+                progressPercent.textContent = percent + '%';
+                progressFill.style.width = percent + '%';
+                completedCount.textContent = checked;
+
+                // به‌روزرسانی آمار هر بخش (اختیاری)
+                document.querySelectorAll('.section').forEach(section => {
+                    const items = section.querySelectorAll('.check-item input[type="checkbox"]');
+                    const checkedInSection = section.querySelectorAll('.check-item input[type="checkbox"]:checked').length;
+                    const countSpan = section.querySelector('.section-title .count .num');
+                    if (countSpan) {
+                        const totalInSection = items.length;
+                        countSpan.textContent = checkedInSection + '/' + totalInSection;
+                    }
+                });
+            }
+
+            // ===== SAVE STATE =====
+            function saveState() {
+                const data = {};
+                checkboxes.forEach(cb => {
+                    data[cb.id] = cb.checked;
+                });
+                try {
+                    localStorage.setItem('foodix_checklist', JSON.stringify(data));
+                    showToast('✅ تغییرات با موفقیت ذخیره شد', 'success');
+                } catch (e) {
+                    showToast('⚠️ خطا در ذخیره‌سازی', 'warning');
+                }
+            }
+
+            // ===== LOAD STATE =====
+            function loadState() {
+                let data = null;
+                try {
+                    const raw = localStorage.getItem('foodix_checklist');
+                    if (raw) data = JSON.parse(raw);
+                } catch (e) {
+                    console.warn('Failed to load state');
+                }
+
+                if (data) {
+                    checkboxes.forEach(cb => {
+                        if (data[cb.id] === true) {
+                            cb.checked = true;
+                        }
+                    });
+                }
+                updateProgress();
+            }
+
+            // ===== RESET =====
+            function resetAll() {
+                if (confirm('⚠️ آیا مطمئن هستید که می‌خواهید تمام تیک‌ها را بردارید؟')) {
+                    checkboxes.forEach(cb => {
+                        cb.checked = false;
+                    });
+                    localStorage.removeItem('foodix_checklist');
+                    updateProgress();
+                    showToast('🔄 چک‌لیست ریست شد', 'info');
+                }
+            }
+
+            // ===== EVENTS =====
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', function(e) {
+                    updateProgress();
+                    // ذخیره خودکار با تاخیر (برای جلوگیری از لاگ بیش از حد)
+                    clearTimeout(window._saveTimeout);
+                    window._saveTimeout = setTimeout(saveState, 300);
+                });
+            });
+
+            // کلیک روی کل آیتم برای راحتی
+            document.querySelectorAll('.check-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // اگر روی checkbox یا label کلیک نشده باشد
+                    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'LABEL' && !e.target.closest('.custom-check')) {
+                        const cb = this.querySelector('input[type="checkbox"]');
+                        if (cb) {
+                            cb.checked = !cb.checked;
+                            cb.dispatchEvent(new Event('change'));
+                        }
+                    }
+                });
+            });
+
+            resetBtn.addEventListener('click', resetAll);
+            saveBtn.addEventListener('click', saveState);
+
+            // ===== INIT =====
+            loadState();
+
+            // ===== KEYBOARD SHORTCUT =====
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 's') {
+                    e.preventDefault();
+                    saveState();
+                }
+                if (e.ctrlKey && e.key === 'r') {
+                    e.preventDefault();
+                    resetAll();
+                }
+            });
+
+            // نمایش راهنما با فشار ?
+            document.addEventListener('keydown', function(e) {
+                if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
+                    showToast('⌨️ Ctrl+S ذخیره · Ctrl+R ریست', 'info');
+                }
+            });
+
+            console.log('🚀 FooDiX Checklist loaded!');
+            console.log('📌 Ctrl+S = Save, Ctrl+R = Reset, ? = Help');
+        })();
+    </script>
+
+</body>
+</html>
