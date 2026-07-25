@@ -7,7 +7,7 @@ FooDiX – Smart food recommendation and budget management system, using K‑Mea
 
 <div dir="rtl" align="center">
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=yellow)
+![Python](https://img.shields.io/badge/Python-3.1x%2B-3776AB?style=for-the-badge&logo=python&logoColor=yellow)
 ![PyQt6](https://img.shields.io/badge/PyQt6-6.0%2B-41CD52?style=for-the-badge&logo=qt&logoColor=green)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0%2B-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=orange)
 ![Status](https://img.shields.io/badge/Status-active-brightgreen?style=for-the-badge)
