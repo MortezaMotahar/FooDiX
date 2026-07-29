@@ -11,8 +11,8 @@ CLIENT_DB_FOLDER = os.path.join(BASE_DIR, "client_dbs")
 def merge_all():
     # بررسی وجود پوشه مشتریان
     if not os.path.exists(CLIENT_DB_FOLDER):
-        print(f"❌ پوشه '{CLIENT_DB_FOLDER}' پیدا نشد.")
-        print(f"✅ لطفاً پوشه را در این مسیر بسازید:\n   {CLIENT_DB_FOLDER}")
+        print(f" پوشه '{CLIENT_DB_FOLDER}' پیدا نشد.")
+        print(f" لطفاً پوشه را در این مسیر بسازید:\n   {CLIENT_DB_FOLDER}")
         print("   سپس فایل‌های دیتابیس مشتریان (با پسوند .db) را داخل آن قرار دهید.")
         return
 
@@ -50,8 +50,7 @@ def merge_all():
             food_id INTEGER NOT NULL,
             rating INTEGER CHECK (rating >= 1 AND rating <= 5),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE CASCADE,
-            UNIQUE(food_id)
+            FOREIGN KEY (food_id) REFERENCES foods(id) ON DELETE CASCADE
         );
         CREATE TABLE IF NOT EXISTS food_suggestions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -76,14 +75,14 @@ def merge_all():
     # پیدا کردن همه فایل‌های دیتابیس داخل پوشه client_dbs
     db_files = glob.glob(os.path.join(CLIENT_DB_FOLDER, "*.db"))
     if not db_files:
-        print("⚠️ هیچ فایل دیتابیسی با پسوند .db در پوشه client_dbs یافت نشد.")
+        print(" هیچ فایل دیتابیسی با پسوند .db در پوشه client_dbs یافت نشد.")
         main_conn.close()
         return
 
-    print(f"🔍 تعداد فایل‌های دیتابیس مشتری برای ادغام: {len(db_files)}")
+    print(f" تعداد فایل‌های دیتابیس مشتری برای ادغام: {len(db_files)}")
 
     for db_file in db_files:
-        print(f"\n📂 در حال پردازش: {db_file}")
+        print(f"\n در حال پردازش: {db_file}")
         client_conn = sqlite3.connect(db_file)
         client_cursor = client_conn.cursor()
 
@@ -105,7 +104,7 @@ def merge_all():
                     VALUES (?, ?, ?, ?, ?, ?)
                 ''', (name, ingredients, cost, calories, category, food_type))
                 new_food_id = main_cursor.lastrowid
-                print(f"   ✅ غذای جدید اضافه شد: {name}")
+                print(f"    غذای جدید اضافه شد: {name}")
             id_map[old_id] = new_food_id
 
         # امتیازها
@@ -141,10 +140,10 @@ def merge_all():
             ''', (name, ingredients, cost, calories, category, food_type, submitted_by, created_at))
 
         client_conn.close()
-        print(f"   ✔️ پردازش این فایل تمام شد.")
+        print(f"    پردازش این فایل تمام شد.")
 
     # ----- به‌روزرسانی امتیازها در دیتابیس اصلی با میانگین -----
-    print("\n⭐ در حال بروزرسانی امتیازهای نهایی...")
+    print("\n در حال بروزرسانی امتیازهای نهایی...")
     for food_name, ratings in rating_accumulator.items():
         avg_rating = sum(ratings) / len(ratings)
         final_rating = int(round(avg_rating))
@@ -161,7 +160,7 @@ def merge_all():
 
     main_conn.commit()
     main_conn.close()
-    print("\n🎉 ادغام کامل شد! حالا می‌توانید برنامه اصلی را اجرا کنید.")
+    print("\n ادغام کامل شد! حالا می‌توانید برنامه اصلی را اجرا کنید.")
 
 if __name__ == "__main__":
     merge_all()
