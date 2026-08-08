@@ -1,0 +1,1 @@
+"""FooDiX backend application package."""
